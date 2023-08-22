@@ -32,7 +32,7 @@ const Navbar = ({
                   alt="logo"
                 />
                 <b style={{ color: "#2de1bd" }}>
-                  STABLE
+                ALLCOIN
                 </b>
               </p>
             </Link>
