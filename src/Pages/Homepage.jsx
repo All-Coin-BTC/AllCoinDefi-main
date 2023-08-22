@@ -1,0 +1,50 @@
+import React, { useEffect, useState } from "react";
+import web3 from "../web3"; // Import the web3 instance
+import "../assets/css/dashboard.css";
+// import Stack from "./dashboard/Stack";
+import Warehousing from "./Warehousing";
+
+const Homepage = () => {
+  const [isWalletConnected, setIsWalletConnected] = useState(false);
+
+  useEffect(() => {
+    const checkWalletConnection = async () => {
+      if (web3.currentProvider) {
+        try {
+          // Request user permission to connect the wallet
+          await web3.currentProvider.request({ method: "eth_requestAccounts" });
+
+          // Check the connection status or Ethereum address availability in the web3 instance
+          const accounts = await web3.eth.getAccounts();
+          const isConnected = accounts.length > 0;
+
+          setIsWalletConnected(isConnected);
+        } catch (error) {
+          console.error("Failed to connect the wallet:", error);
+        }
+      }
+    };
+
+    checkWalletConnection();
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here
+  };
+
+  return (
+    <div>
+      {isWalletConnected ?
+      
+      <Warehousing />
+      
+      : 
+      <h1>Refresh Page</h1>
+      
+      }
+      </div>
+  );
+};
+
+export default Homepage;

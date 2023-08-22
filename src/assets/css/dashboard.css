@@ -1,0 +1,247 @@
+/*--------------------------------------------------------------
+# Contact Me
+--------------------------------------------------------------*/
+
+/* .contact {
+    background-color: whitesmoke;
+} */
+
+#stable {
+    /* background-color: black; */
+    color: #2de1bd;
+    padding: 10px;
+    display: inline-flex;
+    align-items: center;
+}
+
+#logo {
+    width: 50%;
+    /* Adjust the width as needed */
+    height: 30px;
+    /* Adjust the height as needed */
+    margin-right: 1px;
+    /* Add spacing between the image and text */
+}
+
+.wallet-icon {
+    color: #2de1bd;
+    margin-right: 0px;
+}
+.wallet-address {
+    color: #2de1bd;
+}
+.profile-icon {
+    color: #2de1bd;
+    margin-right: 10px;
+}
+
+#stabpool {
+    font-size: 20px;
+    color: rgb(41, 39, 39);
+    margin-left: 50%;
+    background-color: #dde1e4;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.aside-card {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    margin-left: 69%;
+    margin-top: 2%;
+    padding-bottom: 50px;
+}
+
+
+.dashit {
+    margin-top: 150px;
+    margin: 10px;
+    margin-left: 20px;
+
+}
+.connect-btn {
+    background-color: transparent;
+    padding: 7px;
+    color: #2de1bd;
+    border-color: #2de1bd;
+}
+.connect-btn:hover {
+    background-color: #2de1bd;
+    color: black;
+    padding: 8px;
+}
+
+#dash {
+    margin-top: 500px;
+    background-color: #fff;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 10px;
+
+
+}
+
+/* Custom styling for the details element */
+details {
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Custom icon for closed details */
+details:not([open])::before {
+    content: '\25B6';
+    /* Unicode for right-pointing triangle */
+    position: absolute;
+    left: 0;
+}
+
+/* Custom icon for open details */
+details[open]::before {
+    content: '\25BC';
+    /* Unicode for down-pointing triangle */
+    position: absolute;
+    left: 0;
+}
+#pooldetails {
+    padding-left: 12px;
+}
+/* Withdrw radio style */
+
+.radio-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.radio-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.radio-item:last-child {
+  margin-right: 0;
+}
+
+input[type='radio'] {
+  margin-right: 8px;
+}
+
+.paragraph-container {
+  text-align: center;
+  border: 2px dashed #032b2c;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Additional styles for paragraph text */
+.paragraph-container p {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.contact .info-box {
+    color: #444444;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+    padding: 20px 0 30px 0;
+}
+
+.contact .info-box i.bx {
+    font-size: 24px;
+    color: #2de1bd;
+    border-radius: 50%;
+    padding: 15px;
+    background: #fff6e4;
+}
+
+.contact .info-box h3 {
+    font-size: 20px;
+    color: #777777;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+#submitbut {
+    color: black;
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+    background-color: rgb(79, 209, 226);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#submitbut:hover {
+    color: rgb(255, 255, 255);
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+    background-color: #2de1bd;
+}
+
+#cancelbut {
+    color: rgb(29, 27, 27);
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+    background-color: rgb(129, 128, 125);
+    margin-right: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#cancelbut:hover {
+    color: white;
+    height: 50px;
+    width: 150px;
+    border-radius: 10px;
+    background-color: rgb(204, 114, 72);
+    margin-right: 10px;
+}
+
+#bondsbut {
+    color: rgb(31, 28, 28);
+    height: 60px;
+    margin-left: 50px;
+    margin-top: 20px;
+    width: 200px;
+    border-radius: 5px;
+    background-color: rgb(79, 209, 226);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#bondsbut:hover {
+    color: white;
+    height: 60px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: #2de1bd;
+}
+
+.maincard {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+#messagebut {
+    color: white;
+    height: 80px;
+    width: 200px;
+    border-radius: 20px;
+    /* background-color: ; */
+}
