@@ -5,11 +5,9 @@ import WarehousingCard from "../Components/WarehousingCard";
 const data = dummyWarehouse;
 export default function Warehousing() {
   return (
-    <div className="assets-page-container">
-      <div className="assets-title text-gray-400 text-center">Warehousing</div>
-
+    <div className="">
       {data.map((item) => (
-        <div className="mt-4" key={item.id}>
+        <div className="" key={item.id}>
           <WarehousingCard
             id={item.id}
             img={item.img}

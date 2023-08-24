@@ -1,33 +1,82 @@
 import React from "react";
 import { PuffLoader } from "react-spinners";
+import logoImage from "../assets/images/Logo-main.png";
 
-export default function LoadScreen({ loading }) {
+interface LoadScreenProps {
+  loading: boolean;
+}
+
+const LoadScreen: React.FC<LoadScreenProps> = ({ loading }) => {
   return (
-    <div className="loading-page-container">
-      <div className="flex flex-col items-center justify-between h-full pt-52 pb-10 overflow-hidden">
-        <div className="top-container flex justify-center items-center gap-2">
-          <div className="ringLoader-container relative z-10">
+    <div style={styles.container}>
+      <div style={styles.contentContainer}>
+        <div style={styles.topContainer}>
+          <div style={styles.loaderContainer}>
             <PuffLoader
-              className="z-50"
               color={"#2de1bd"}
               loading={loading}
               size={80}
               aria-label="Loading Spinner"
               data-testid="loader"
-              cssOverride={{ opacity: 0.28 }}
+              css={{ opacity: 0.28 }}
             />
             <img
-              src="Logo 8.png"
-              className="allcoin-spinner-logo w-8 absolute left-1/2 top-1/2"
+              src={logoImage}
+              style={styles.spinnerLogo}
+              alt="Logo"
             />
           </div>
-
-          <div className="loading-title text-4xl font-bold">ALLCOIN</div>
+          <div style={styles.loadingTitle}>ALLCOIN</div>
         </div>
-        <div className="bottom-container text-black">
-          Enabling Real World P2P
-        </div>
+        <div style={styles.bottomContainer}>Enabling Real World P2P</div>
       </div>
     </div>
   );
-}
+};
+
+const styles = {
+  container: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100vh",
+    backgroundImage: "linear-gradient(to bottom, #11836c, #18dbb4, #2de1bd)",
+  },
+  contentContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between",
+    height: "100%",
+    paddingTop: "52px",
+    paddingBottom: "10px",
+    overflow: "hidden",
+  },
+  topContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "2rem",
+  },
+  loaderContainer: {
+    position: "relative",
+    zIndex: 10,
+  },
+  spinnerLogo: {
+    width: "8rem",
+    position: "absolute",
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
+  },
+  loadingTitle: {
+    fontSize: "2.5rem",
+    fontWeight: "bold",
+  },
+  bottomContainer: {
+    color: "black",
+    marginTop: "2rem",
+  },
+};
+
+export default LoadScreen;

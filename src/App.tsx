@@ -26,12 +26,24 @@ import "./assets/css/skins/orange.css";
 import web3 from "./web3"; // Import the web3 instance
 
 const App: React.FC = () => {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
+
   useEffect(() => {
-    setLoading(true);
+    // Check for internet connection
+    const checkInternetConnection = async () => {
+      try {
+        // Attempt to fetch a small file from a remote server
+        await fetch("https://www.google.com/favicon.ico");
+        setLoading(false); // Internet connection available, set loading to false
+      } catch (error) {
+        setLoading(true); // No internet connection, keep loading as true
+      }
+    };
+
+    checkInternetConnection();
     setTimeout(() => {
-      setLoading(false);
-    }, 3500);
+      setLoading(false); // Always set loading to false after 3 seconds
+    }, 3000);
   }, []);
 
   const [isWalletConnected, setIsWalletConnected] = useState<boolean>(false);
@@ -105,9 +117,8 @@ const App: React.FC = () => {
                   <div className="carousel-inner">
                     {/* Carousel Item Starts */}
                     <div className="item active bg-parallax item-1">
-                      <div className="slider-content">
                         <div className="container">
-                          <div className="col-lg-12">
+                          
                             <Routes>
                               <Route path="/" element={<Homepage />} />
                               <Route
@@ -129,8 +140,7 @@ const App: React.FC = () => {
                                 element={<Insurance />}
                               />
                             </Routes>
-                          </div>
-                        </div>
+                          
                       </div>
                     </div>
                     {/* Carousel Item Ends */}

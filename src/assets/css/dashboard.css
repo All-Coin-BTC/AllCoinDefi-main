@@ -56,7 +56,6 @@
 
 
 .dashit {
-    margin-top: 150px;
     margin: 10px;
     margin-left: 20px;
 
@@ -74,14 +73,15 @@
 }
 
 #dash {
-    margin-top: 500px;
-    background-color: #fff;
-    margin: 10px;
+    background-color: #1d1d1d;
+    margin: 30px;
     border-radius: 10px;
     padding: 10px;
-
-
 }
+#headeing {
+    color: #2de1bd;
+}
+
 
 /* Custom styling for the details element */
 details {
