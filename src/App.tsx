@@ -14,6 +14,7 @@ import WorkingCapitalPool from "./Pages/WorkingCapitalPool";
 import LoadScreen from "./Components/LoadScreen";
 import Navbar from "./Components/Navbar";
 import Nowallet from "./Components/Nowallet";
+import Footer from "./Components/Footer";
 
 import "./assets/css/font-awesome.min.css";
 import "./assets/css/bootstrap.min.css";
@@ -114,41 +115,23 @@ const App: React.FC = () => {
                   className="carousel slide carousel-fade"
                   data-ride="carousel"
                 >
-                  <div className="carousel-inner">
-                    {/* Carousel Item Starts */}
-                    <div className="item active bg-parallax item-1">
-                        <div className="container">
-                          
-                            <Routes>
-                              <Route path="/" element={<Homepage />} />
-                              <Route
-                                path="/warehousing"
-                                element={<Warehousing />}
-                              />
-                              <Route
-                                path="/logistics"
-                                element={<Logistics />}
-                              />
-                              <Route path="/logistics-pools" />
-                              <Route path="/warehouse-pools" />
-                              <Route
-                                path="/working-capital-pools"
-                                element={<WorkingCapitalPool />}
-                              />
-                              <Route
-                                path="/insurance-pools"
-                                element={<Insurance />}
-                              />
-                            </Routes>
-                          
-                      </div>
-                    </div>
-                    {/* Carousel Item Ends */}
-                  </div>
+                  <Routes>
+                    <Route path="/" element={<Homepage />} />
+                    <Route path="/warehousing" element={<Warehousing />} />
+                    <Route path="/logistics" element={<Logistics />} />
+                    <Route path="/logistics-pools" />
+                    <Route path="/warehouse-pools" />
+                    <Route
+                      path="/working-capital-pools"
+                      element={<WorkingCapitalPool />}
+                    />
+                    <Route path="/insurance-pools" element={<Insurance />} />
+                  </Routes>
                 </div>
               ) : (
                 <Nowallet connectWallet={connectWallet} />
               )}
+              <Footer />
             </Router>
           </div>
         </>

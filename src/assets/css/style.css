@@ -1108,6 +1108,41 @@ ul.nav.nav-tabs li a:hover, ul.nav.nav-tabs li.active a:hover {
   width: 100%;
 }
 
+
+#main-slide .item .homeslider-content {
+  z-index: 1;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+#main-slide .item.active .homeslider-content {
+  opacity: 1;
+  -webkit-transition: opacity 100ms;
+  -moz-transition: opacity 100ms;
+  -o-transition: opacity 100ms;
+  transition: opacity 100ms;
+}
+
+#main-slide .homeslider-content {
+  top: 50%;
+  margin-top: -300px;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  color: #fff;
+}
+
+.homeslider-content {
+  position: relative;
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+
 .slider-text {
   display: table;
   vertical-align: bottom;
