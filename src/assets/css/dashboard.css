@@ -202,10 +202,13 @@
 
 #stable {
   /* background-color: black; */
-  color: #2de1bd;
+  color: #3d4b48;
   padding: 10px;
   display: inline-flex;
   align-items: center;
+}
+#learnmore {
+  color: #12b695;
 }
 
 #logo {

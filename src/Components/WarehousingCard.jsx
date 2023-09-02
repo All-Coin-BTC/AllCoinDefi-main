@@ -35,9 +35,36 @@ export default function WarehousingCard({
   };
 
   const data = [
-    { mainColumn1: "First", mainColumn2: "second" },
-    { mainColumn1: "thrd", mainColumn2: "fourth" },
-    // Add more data as needed
+    {
+      mainColumn1: "Revenue Generated:",
+      mainColumn2: revenue.toLocaleString(),
+    },
+    { mainColumn1: "Labor Costs:", mainColumn2: laborCostSum.toLocaleString() },
+    { mainColumn1: "Asset Costs:", mainColumn2: assetCostSum.toLocaleString() },
+    {
+      mainColumn1: "Insurance Costs:",
+      mainColumn2: insuranceCost.toLocaleString(),
+    },
+    // more main-rows
+  ];
+
+  const subRowData = [
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
+    [
+      ["Janitor Labor", janitorLabor],
+      ["Mechanic Labor", mechanicLabor],
+    ],
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
   ];
 
   useEffect(() => {
@@ -49,201 +76,105 @@ export default function WarehousingCard({
       <div className="dashit">
         <div className="row">
           <div className="col-lg-12">
-            <div id="dash" className="col-md-5">
-              <div className="custom-card">
-                <div className="custom-card-img">
-                  <img src={ware} alt="Profile" />
-                </div>
-                <div className="custom-desc">
-                  <h6 className="custom-primary-text">{name}</h6>
-                  <h6 className="custom-secondary-text">
-                  {desc}
-                  </h6>
-                </div>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-
-                <div className="custom-details">
-                  <div className="custom-rating">
-                    <h6 className="custom-primary-text">{(apr * 100).toFixed(1)}%</h6>
-                    <h6 className="custom-secondary-text">APR</h6>
+            <div className="d-flex justify-content-center">
+              <div id="dash" className="col-md-5 mx-auto">
+                <div className="custom-card">
+                  <div className="custom-card-img">
+                    <img src={ware} alt="Profile" />
                   </div>
-                  <div className="custom-activity">
-                    <h6 className="custom-primary-text">${amtStaked.toLocaleString()}</h6>
-                    <h6 className="custom-secondary-text">Staked Now</h6>
+                  <div className="custom-desc">
+                    <h6 className="custom-primary-text">{name}</h6>
+                    <h6 className="custom-secondary-text">{desc}</h6>
                   </div>
-                </div>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
+                  <br></br>
 
-                <br></br>
-                <br></br>
-
-                {/* table */}
-                <table className="custom-table">
-                  <tbody>
-                    {data.map((item, index) => (
-                      <React.Fragment key={index}>
-                        
-                        <tr
-                          className="main-row"
-                          onClick={() => toggleSubRows(index)}
-                        >
-                          <td id="tdata">{item.mainColumn1}</td>
-                          <td id="tdata">
-                            {item.mainColumn2}
-                            <span
-                              className={`dropdown-icon ${
-                                expandedRows.includes(index) ? "open" : ""
-                              }`}
-                            >
-                              ▼
-                            </span>
-                          </td>
-                        </tr>
-                        {expandedRows.includes(index) && (
-                          <>
-                            <tr className="sub-row">
-                              <td colSpan={2}>
-                                <div className="sub-row-content">
-                                  <div> Sub 1</div>
-                                  <div> Sub 2</div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr className="sub-row">
-                              <td colSpan={2}>
-                                <div className="sub-row-content">
-                                  <div> Sub 3</div>
-                                  <div> Sub 4</div>
-                                </div>
-                              </td>
-                            </tr>
-                          </>
-                        )}
-                      </React.Fragment>
-                    ))}
-                  </tbody>
-                </table>
-                <p id="totalcontent">
-                  <span id="total">Total:</span>
-                  <span id="totalprice">$3000</span>
-                </p>
-
-                {/* ...rest of the card content... */}
-              </div>
-              <div className="col-md-12 text-center">
-                <button
-                  id="submitbut"
-                  type="button"
-                  className="button button-a button-big button-rounded"
-                >
-                  Stake
-                  <img src={stakeIcon} alt="Stake Icon" className="icon" />{" "}
-                </button>
-              </div>
-            </div>
-
-            <div id="dash" className="col-md-5">
-              <div className="custom-card">
-                <div className="custom-card-img">
-                  <img src={ware} alt="Profile" />
-                </div>
-                <div className="custom-desc">
-                  <h6 className="custom-primary-text">{name}</h6>
-                  <h6 className="custom-secondary-text">
-                  {desc}
-                  </h6>
-                </div>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-
-                <div className="custom-details">
-                  <div className="custom-rating">
-                    <h6 className="custom-primary-text">{(apr * 100).toFixed(1)}%</h6>
-                    <h6 className="custom-secondary-text">APR</h6>
+                  <div className="custom-details">
+                    <div className="custom-rating">
+                      <h6 className="custom-primary-text">
+                        {(apr * 100).toFixed(1)}%
+                      </h6>
+                      <h6 className="custom-secondary-text">APR</h6>
+                    </div>
+                    <div className="custom-activity">
+                      <h6 className="custom-primary-text">
+                        ${amtStaked.toLocaleString()}
+                      </h6>
+                      <h6 className="custom-secondary-text">Staked Now</h6>
+                    </div>
                   </div>
-                  <div className="custom-activity">
-                    <h6 className="custom-primary-text">${amtStaked.toLocaleString()}</h6>
-                    <h6 className="custom-secondary-text">Staked Now</h6>
+
+                  <br></br>
+                  <br></br>
+
+                  {/* table */}
+                  <table className="custom-table">
+                    <tbody>
+                      {data.map((item, index) => (
+                        <React.Fragment key={index}>
+                          <tr
+                            className="main-row"
+                            onClick={() => toggleSubRows(index)}
+                          >
+                            <td id="tdata">{item.mainColumn1}</td>
+                            <td id="tdata">
+                              ${item.mainColumn2}
+                              <span
+                                className={`dropdown-icon ${
+                                  expandedRows.includes(index) ? "open" : ""
+                                }`}
+                              >
+                                ▼
+                              </span>
+                            </td>
+                          </tr>
+                          {expandedRows.includes(index) && (
+                            <>
+                              {subRowData[index].map((subRow, subRowIndex) => (
+                                <tr className="sub-row" key={subRowIndex}>
+                                  <td colSpan={2}>
+                                    <div className="sub-row-content">
+                                      <div>{subRow[0]}</div>
+                                      <div>${subRow[1]}</div>
+                                    </div>
+                                  </td>
+                                </tr>
+                              ))}
+                            </>
+                          )}
+                        </React.Fragment>
+                      ))}
+                    </tbody>
+                    <p id="totalcontent">
+                      <span id="total">Profit:</span>
+                      <span id="totalprice">${profit.toLocaleString()}</span>
+                    </p>
+                  </table>
+                </div>
+                <div className="col-md-12 text-center">
+                  <button
+                    id="submitbut"
+                    type="button"
+                    className="button button-a button-big button-rounded"
+                  >
+                    <b>Stake</b>
+                    <img
+                      src={stakeIcon}
+                      alt="Stake Icon"
+                      className="icon"
+                    />{" "}
+                  </button>
+                  <div className="learn-more-btn text-sm mt-4">
+                    <p id="learnmore">Learn More</p>
                   </div>
                 </div>
-
-                <br></br>
-                <br></br>
-
-                {/* table */}
-                <table className="custom-table">
-                  <tbody>
-                    {data.map((item, index) => (
-                      <React.Fragment key={index}>
-                        
-                        <tr
-                          className="main-row"
-                          onClick={() => toggleSubRows(index)}
-                        >
-                          <td id="tdata">{item.mainColumn1}</td>
-                          <td id="tdata">
-                            {item.mainColumn2}
-                            <span
-                              className={`dropdown-icon ${
-                                expandedRows.includes(index) ? "open" : ""
-                              }`}
-                            >
-                              ▼
-                            </span>
-                          </td>
-                        </tr>
-                        {expandedRows.includes(index) && (
-                          <>
-                            <tr className="sub-row">
-                              <td colSpan={2}>
-                                <div className="sub-row-content">
-                                  <div> Sub 1</div>
-                                  <div> Sub 2</div>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr className="sub-row">
-                              <td colSpan={2}>
-                                <div className="sub-row-content">
-                                  <div> Sub 3</div>
-                                  <div> Sub 4</div>
-                                </div>
-                              </td>
-                            </tr>
-                          </>
-                        )}
-                      </React.Fragment>
-                    ))}
-                  </tbody>
-                </table>
-                <p id="totalcontent">
-                  <span id="total">Total:</span>
-                  <span id="totalprice">$3000</span>
-                </p>
-
-                {/* ...rest of the card content... */}
-              </div>
-              <div className="col-md-12 text-center">
-                <button
-                  id="submitbut"
-                  type="button"
-                  className="button button-a button-big button-rounded"
-                >
-                  Stake
-                  <img src={stakeIcon} alt="Stake Icon" className="icon" />{" "}
-                </button>
               </div>
             </div>
           </div>
