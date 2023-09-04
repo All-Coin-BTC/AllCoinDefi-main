@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWallet } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -16,7 +16,11 @@ const Navbar = ({
   const truncatedAddress = isWalletConnected
     ? `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`
     : "";
+    const location = useLocation();
 
+    const isActiveRoute = (...routePaths) => {
+      return routePaths.some((path) => location.pathname === path);
+    };
   return (
     <header className="header fixed-top">
       <div className="container">
@@ -31,74 +35,64 @@ const Navbar = ({
                   src={logo}
                   alt="logo"
                 />
-                <b style={{ color: "#2de1bd" }}>
-                ALLCOIN
-                </b>
+                <b style={{ color: "#2de1bd" }}>ALLCOIN</b>
               </p>
             </Link>
           </div>
           {/* Logo Ends */}
           {/* Wallet Stats Starts */}
-          
-            <div className="col-md-7 col-lg-7">
-              <ul className="unstyled bitcoin-stats text-center">
-                {isWalletConnected ? (
-                  <>
-                    <li>
-                      <FontAwesomeIcon
-                        icon={faWallet}
-                        className="wallet-icon"
-                      />
-                    </li>
-                    <li>
-                      <h6 style={{ color: "#2de1bd" }}>5.00</h6>
-                      <span>
-                        <b>
-                          <h5 style={{ color: "#2de1bd" }}>BTC</h5>
-                        </b>
-                      </span>
-                    </li>
-                    
-                    
-                    <li>
-                      <h6 style={{ color: "#2de1bd" }}>30.00</h6>
-                      <span>
-                        <b>
-                          <h5 style={{ color: "#2de1bd" }}>USD</h5>
-                        </b>
-                      </span>
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    <li>
-                      <FontAwesomeIcon
-                        icon={faWallet}
-                        className="wallet-icon"
-                      />
-                    </li>
-                    <li>
-                      <h6 style={{ color: "#2de1bd" }}>0.00</h6>
-                      <span>
-                        <b>
-                          <h5 style={{ color: "#2de1bd" }}>BTC</h5>
-                        </b>
-                      </span>
-                    </li>
-                    <li>
-                      <h6 style={{ color: "#2de1bd" }}>0.00</h6>
-                      <span>
-                        <b>
-                          <h5 style={{ color: "#2de1bd" }}>USD</h5>
-                        </b>
-                      </span>
-                    </li>
-                    
-                  </>
-                )}
-              </ul>
-            </div>
-          
+
+          <div className="col-md-7 col-lg-7">
+            <ul className="unstyled bitcoin-stats text-center">
+              {isWalletConnected ? (
+                <>
+                  <li>
+                    <FontAwesomeIcon icon={faWallet} className="wallet-icon" />
+                  </li>
+                  <li>
+                    <h6 style={{ color: "#2de1bd" }}>5.00</h6>
+                    <span>
+                      <b>
+                        <h5 style={{ color: "#2de1bd" }}>BTC</h5>
+                      </b>
+                    </span>
+                  </li>
+
+                  <li>
+                    <h6 style={{ color: "#2de1bd" }}>30.00</h6>
+                    <span>
+                      <b>
+                        <h5 style={{ color: "#2de1bd" }}>USD</h5>
+                      </b>
+                    </span>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <FontAwesomeIcon icon={faWallet} className="wallet-icon" />
+                  </li>
+                  <li>
+                    <h6 style={{ color: "#2de1bd" }}>0.00</h6>
+                    <span>
+                      <b>
+                        <h5 style={{ color: "#2de1bd" }}>BTC</h5>
+                      </b>
+                    </span>
+                  </li>
+                  <li>
+                    <h6 style={{ color: "#2de1bd" }}>0.00</h6>
+                    <span>
+                      <b>
+                        <h5 style={{ color: "#2de1bd" }}>USD</h5>
+                      </b>
+                    </span>
+                  </li>
+                </>
+              )}
+            </ul>
+          </div>
+
           {/* Wallet Stats Ends */}
           {/* Wallet Actions Starts */}
           <div className="col-md-3 col-lg-3">
@@ -110,10 +104,7 @@ const Navbar = ({
                     <span>{truncatedAddress}</span>
                   </li>
                   <li className="disconnect-wallet">
-                    <button
-                      className="connect-btn"
-                      onClick={disconnectWallet}
-                    >
+                    <button className="connect-btn" onClick={disconnectWallet}>
                       Disconnect
                     </button>
                   </li>
@@ -121,11 +112,7 @@ const Navbar = ({
               ) : (
                 <>
                   <li className="connect-wallet">
-                    <button
-                  
-                      className="connect-btn"
-                      onClick={connectWallet}
-                    >
+                    <button className="connect-btn" onClick={connectWallet}>
                       <i className="fa fa-plug"></i> Connect Wallet
                     </button>
                   </li>
@@ -167,15 +154,21 @@ const Navbar = ({
             <div className="collapse navbar-collapse navbar-responsive-collapse">
               {/* Main Menu Starts */}
               <ul className="nav navbar-nav">
-                <li className="active">
-                <Link to="/">Warehousing</Link>
+                <li className={isActiveRoute("/") ? "active" : ""}>
+                  <Link to="/">Warehousing</Link>
                 </li>
 
-                <li>
-                <Link to="/logistics">Logistics</Link>
+                <li className={isActiveRoute("/logistics") ? "active" : ""}>
+                  <Link to="/logistics">Logistics</Link>
                 </li>
-                
-                <li className="dropdown">
+
+                <li
+                  className={
+                    isActiveRoute("/working-capital-pools", "/insurance-pools")
+                      ? "active dropdown"
+                      : "dropdown"
+                  }
+                >
                   <a
                     href="#"
                     className="dropdown-toggle"
@@ -184,21 +177,30 @@ const Navbar = ({
                     Liquidity Pools <i className="fa fa-angle-down"></i>
                   </a>
                   <ul className="dropdown-menu" role="menu">
-                    <li>
-                      <Link to="/working-capital-pools">Logistics Pools </Link>
+                    <li
+                      className={
+                        isActiveRoute("/working-capital-pools") ? "active" : ""
+                      }
+                    >
+                      <Link to="/working-capital-pools">
+                        Working Capital Pools
+                      </Link>
                     </li>
-                    <li>
-                      <Link to="/warehouse-pools"> Warehouse Pools</Link>
-                    </li>
-                    <li>
-                      <Link to="/working-capital-pools"> Working Capital Pools</Link>
-                    </li>
-                    <li>
+                    <li
+                      className={
+                        isActiveRoute("/insurance-pools") ? "active" : ""
+                      }
+                    >
                       <Link to="/insurance-pools">Insurance Pools</Link>
                     </li>
                   </ul>
                 </li>
-                <li className="dropdown">
+
+                <li
+                  className={
+                    isActiveRoute("/Roadmap", "/Whitepaper", "/Medium") ? "active dropdown" : "dropdown"
+                  }
+                >
                   <a
                     href="#"
                     className="dropdown-toggle"
@@ -207,28 +209,28 @@ const Navbar = ({
                     Docs <i className="fa fa-angle-down"></i>
                   </a>
                   <ul className="dropdown-menu" role="menu">
-                    <li>
+                    <li className={isActiveRoute("/Roadmap") ? "active" : ""}>
                       <Link>Roadmap</Link>
                     </li>
-                    <li>
+                    <li className={isActiveRoute("/Whitepaper") ? "active" : ""}>
                       <Link>Whitepaper</Link>
                     </li>
-                    <li>
+                    <li className={isActiveRoute("/Medium") ? "active" : ""}>
                       <Link>Medium</Link>
                     </li>
-                    
-                    
                   </ul>
                 </li>
-                <li>
-                  <Link>Contact</Link>
+
+                <li className={isActiveRoute("/contact") ? "active" : ""}>
+                  <Link to="/contact">Contact</Link>
                 </li>
+
                 {/* Cart Icon Starts */}
                 {/* <li className="cart">
-                  <a>
-                    <i className="fa fa-shopping-cart"></i>
-                  </a>
-                </li> */}
+              <a>
+                <i className="fa fa-shopping-cart"></i>
+              </a>
+            </li> */}
                 {/* Cart Icon Starts */}
                 {/* Search Icon Starts */}
                 <li className="search">
