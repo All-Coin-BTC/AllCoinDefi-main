@@ -151,6 +151,12 @@
   padding-left: 20px;
   padding-right: 20px; /* Add padding to the right side */
 }
+#tabtext {
+  text-align: center;
+  color: #12b695;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: large;
+}
 
 .align-right {
   text-align: right;

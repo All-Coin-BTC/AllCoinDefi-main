@@ -284,106 +284,106 @@ export default function LogisticsCard({
             <div className="custom-card-img">
               <img src={management} alt="Profile" />
             </div>
-            
-              <div className="custom-desc">
-                <h6 className="custom-primary-text">
-                  Working Capital Allocation
-                </h6>
-                <h6 className="custom-secondary-text">Warehousing</h6>
-              </div>
+            <div className="custom-desc">
+              <h6 className="custom-primary-text">
+                Working Capital Allocation
+              </h6>
+            </div>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
 
-              
+            {/* table */}
+            <h5 id="tabtext">Warehouse</h5>
+            <table className="custom-table">
+              <tbody>
+                {waredata.map((item, index) => (
+                  <React.Fragment key={index}>
+                    <tr
+                      className="main-row"
+                      onClick={() => toggleSubRows(index)}
+                    >
+                      <td id="tdata">{item.mainColumn1}</td>
+                      <td id="tdata">
+                        ${item.mainColumn2}
+                        <span
+                          className={`dropdown-icon ${
+                            expandedRows.includes(index) ? "open" : ""
+                          }`}
+                        >
+                          ▼
+                        </span>
+                      </td>
+                    </tr>
+                    {expandedRows.includes(index) && (
+                      <>
+                        {waresubRowData[index].map((subRow, subRowIndex) => (
+                          <tr className="sub-row" key={subRowIndex}>
+                            <td colSpan={2}>
+                              <div className="sub-row-content">
+                                <div>{subRow[0]}</div>
+                                <div>${subRow[1]}</div>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </>
+                    )}
+                  </React.Fragment>
+                ))}
+              </tbody>
+            </table>
 
-              {/* table */}
-              <table className="custom-table">
-                <tbody>
-                  {waredata.map((item, index) => (
-                    <React.Fragment key={index}>
-                      <tr
-                        className="main-row"
-                        onClick={() => toggleSubRows(index)}
-                      >
-                        <td id="tdata">{item.mainColumn1}</td>
-                        <td id="tdata">
-                          ${item.mainColumn2}
-                          <span
-                            className={`dropdown-icon ${
-                              expandedRows.includes(index) ? "open" : ""
-                            }`}
-                          >
-                            ▼
-                          </span>
-                        </td>
-                      </tr>
-                      {expandedRows.includes(index) && (
-                        <>
-                          {waresubRowData[index].map((subRow, subRowIndex) => (
-                            <tr className="sub-row" key={subRowIndex}>
-                              <td colSpan={2}>
-                                <div className="sub-row-content">
-                                  <div>{subRow[0]}</div>
-                                  <div>${subRow[1]}</div>
-                                </div>
-                              </td>
-                            </tr>
-                          ))}
-                        </>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </tbody>
-              </table>
+            <h5 id="tabtext">Logistics</h5>
 
-              <h6>Logistics</h6>
-
-              
-              {/* table */}
-              <table className="custom-table">
-                <tbody>
-                  {logdata.map((item, index) => (
-                    <React.Fragment key={index}>
-                      <tr
-                        className="main-row"
-                        onClick={() => toggleSubRows(index)}
-                      >
-                        <td id="tdata">{item.mainColumn1}</td>
-                        <td id="tdata">
-                          ${item.mainColumn2}
-                          <span
-                            className={`dropdown-icon ${
-                              expandedRows.includes(index) ? "open" : ""
-                            }`}
-                          >
-                            ▼
-                          </span>
-                        </td>
-                      </tr>
-                      {expandedRows.includes(index) && (
-                        <>
-                          {logsubRowData[index].map((subRow, subRowIndex) => (
-                            <tr className="sub-row" key={subRowIndex}>
-                              <td colSpan={2}>
-                                <div className="sub-row-content">
-                                  <div>{subRow[0]}</div>
-                                  <div>${subRow[1]}</div>
-                                </div>
-                              </td>
-                            </tr>
-                          ))}
-                        </>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </tbody>
-                <p id="totalcontent">
-                  <span id="total">Profit:</span>
-                  <span id="totalprice">$400</span>
-                </p>
-              </table>
-            
-
-              
-            
+            {/* table */}
+            <table className="custom-table">
+              <tbody>
+                {logdata.map((item, index) => (
+                  <React.Fragment key={index}>
+                    <tr
+                      className="main-row"
+                      onClick={() => toggleSubRows(index)}
+                    >
+                      <td id="tdata">{item.mainColumn1}</td>
+                      <td id="tdata">
+                        ${item.mainColumn2}
+                        <span
+                          className={`dropdown-icon ${
+                            expandedRows.includes(index) ? "open" : ""
+                          }`}
+                        >
+                          ▼
+                        </span>
+                      </td>
+                    </tr>
+                    {expandedRows.includes(index) && (
+                      <>
+                        {logsubRowData[index].map((subRow, subRowIndex) => (
+                          <tr className="sub-row" key={subRowIndex}>
+                            <td colSpan={2}>
+                              <div className="sub-row-content">
+                                <div>{subRow[0]}</div>
+                                <div>${subRow[1]}</div>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </>
+                    )}
+                  </React.Fragment>
+                ))}
+              </tbody>
+              <p id="totalcontent">
+                <span id="total">Profit:</span>
+                <span id="totalprice">$400</span>
+              </p>
+            </table>
           </div>
         </div>
       </>
