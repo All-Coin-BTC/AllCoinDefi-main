@@ -24,11 +24,12 @@ import "./assets/css/style.css";
 import "./assets/css/dashboard.css";
 import "./assets/css/skins/orange.css";
 
+
 import web3 from "./web3"; // Import the web3 instance
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
-
+  
   useEffect(() => {
     // Check for internet connection
     const checkInternetConnection = async () => {

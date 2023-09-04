@@ -19,6 +19,7 @@ export const dummyWorkingCapital = [
     warehouseInsuranceCost: 750000,
     learnMoreInfo: "The delivery vans generate yield and you receive that!",
   },
+  
 ];
 export const dummyPieChartData = [
   { name: "Logistics", dollars: 3000000, fill: "#2de1bd" },
@@ -42,6 +43,22 @@ export const dummyWarehouse = [
     insuranceCost: 7500,
     learnMoreInfo: "The delivery vans generate yield and you receive that!",
   },
+  {
+    id: 1,
+    img: "/warehouse.png",
+    name: "Lityer Hub 2 Warehouse",
+    desc: "Stake your AllCoin in the LityerHub1 Warehouse pool to receive daily staking rewards.",
+    apr: 0.082,
+    amtStaked: 814627,
+    revenue: 250000,
+    janitorLabor: 30000,
+    mechanicLabor: 15000,
+    vanOneCost: 10000,
+    vanTwoCost: 12500,
+    leaseCost: 50000,
+    insuranceCost: 6500,
+    learnMoreInfo: "The delivery vans generate yield and you receive that!",
+  },
 ];
 export const dummyLogistics = [
   {
@@ -54,6 +71,20 @@ export const dummyLogistics = [
     revenue: 100000,
     driverLabor: 28000,
     maintenanceLabor: 4000,
+    gasolineCost: 5400,
+    insuranceCost: 8000,
+    learnMoreInfo: "The delivery vans generate yield and you receive that!",
+  },
+  {
+    id: 1,
+    img: "/logistics.png",
+    name: "Lityer Hub2 Logistics",
+    desc: "Stake your Allcoin in the LityerHub1 Logistics pool to receive daily staking rewards.",
+    apr: 0.065,
+    amtStaked: 491538,
+    revenue: 200000,
+    driverLabor: 38000,
+    maintenanceLabor: 3000,
     gasolineCost: 5400,
     insuranceCost: 8000,
     learnMoreInfo: "The delivery vans generate yield and you receive that!",

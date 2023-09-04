@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 (function($) {
 	
     "use strict";
@@ -91,9 +92,9 @@
 		/*  REFRESH 503 PAGE
 		/* ----------------------------------------------------------- */
 		
-		$("#refresh").on("click", function() {
-			location.reload();
-		});
+		// $("#refresh").on("click", function() {
+		// 	location.reload();
+		// });
 		
 		/* ----------------------------------------------------------- */
 		/*  TESTIMONIAL CAROUSEL TOUCH OPTIMIZED [ MAIN SLIDER ]
@@ -135,19 +136,19 @@
             });
         });
 		
-		/* ----------------------------------------------------------- */
-		/*  WIDGET DATA FROM BITCOIN.COM
-		/* ----------------------------------------------------------- */
+		// /* ----------------------------------------------------------- */
+		// /*  WIDGET DATA FROM BITCOIN.COM
+		// /* ----------------------------------------------------------- */
 		
-		(function(b, i, t, C, O, I, N) {
-			window.addEventListener("load", function() {
-				if (b.getElementById(C)) return;
-				I = b.createElement(i), N = b.getElementsByTagName(i)[0];
-				I.src = t;
-				I.id = C;
-				N.parentNode.insertBefore(I, N);
-			}, false)
-		})(document, "script", "https://widgets.bitcoin.com/widget.js", "btcwdgt");
+		// (function(b, i, t, C, O, I, N) {
+		// 	window.addEventListener("load", function() {
+		// 		if (b.getElementById(C)) return;
+		// 		I = b.createElement(i), N = b.getElementsByTagName(i)[0];
+		// 		I.src = t;
+		// 		I.id = C;
+		// 		N.parentNode.insertBefore(I, N);
+		// 	}, false)
+		// })(document, "script", "https://widgets.bitcoin.com/widget.js", "btcwdgt");
 		
 		/* ----------------------------------------------------------- */
 		/*  VARIABLES FOR SELECT INPUT AND BITCOIN CALCULATOR FORM
@@ -328,17 +329,17 @@
 					//rotate each pricing-wrapper 
 					//at the end of the animation hide the not-selected pricing tables and rotate back the .pricing-wrapper
 
-					if (!Modernizr.cssanimations) {
-						hide_not_selected_items(table_elements, selected_filter);
-						pricing_table_wrapper.removeClass("is-switched");
-					} else {
-						pricing_table_wrapper.addClass("is-switched").eq(0).one("webkitAnimationEnd oanimationend msAnimationEnd animationend", function() {
-							hide_not_selected_items(table_elements, selected_filter);
-							pricing_table_wrapper.removeClass("is-switched");
-							//change rotation direction if .pricing-list has the .bounce-invert class
-							if (pricing_table.find(".pricing-list").hasClass("bounce-invert")) pricing_table_wrapper.toggleClass("reverse-animation");
-						});
-					}
+					// if (!Modernizr.cssanimations) {
+					// 	hide_not_selected_items(table_elements, selected_filter);
+					// 	pricing_table_wrapper.removeClass("is-switched");
+					// } else {
+					// 	pricing_table_wrapper.addClass("is-switched").eq(0).one("webkitAnimationEnd oanimationend msAnimationEnd animationend", function() {
+					// 		hide_not_selected_items(table_elements, selected_filter);
+					// 		pricing_table_wrapper.removeClass("is-switched");
+					// 		//change rotation direction if .pricing-list has the .bounce-invert class
+					// 		if (pricing_table.find(".pricing-list").hasClass("bounce-invert")) pricing_table_wrapper.toggleClass("reverse-animation");
+					// 	});
+					// }
 				});
 			});
 		}

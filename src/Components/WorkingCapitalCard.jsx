@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import stakeIcon from "../assets/images/usdc.png";
+import management from "../assets/images/asset-management.png";
 
 export default function LogisticsCard({
   id,
@@ -35,205 +37,356 @@ export default function LogisticsCard({
     laborCostSum -
     suppliesCostSum -
     insuranceCostSum;
+
+  const [expandedRows, setExpandedRows] = useState([]);
+
+  const toggleSubRows = (index) => {
+    if (expandedRows.includes(index)) {
+      setExpandedRows(expandedRows.filter((rowIndex) => rowIndex !== index));
+    } else {
+      setExpandedRows([...expandedRows, index]);
+    }
+  };
+
+  const data = [
+    {
+      mainColumn1: "Revenue Generated:",
+      mainColumn2: revenue.toLocaleString(),
+    },
+    {
+      mainColumn1: "Fixed Asset Costs:",
+      mainColumn2: warehouseAssetCostSum.toLocaleString(),
+    },
+    { mainColumn1: "Labor Costs:", mainColumn2: laborCostSum.toLocaleString() },
+    {
+      mainColumn1: "Supplies Costs:",
+      mainColumn2: suppliesCostSum.toLocaleString(),
+    },
+    {
+      mainColumn1: "Insurance Costs:",
+      mainColumn2: insuranceCostSum.toLocaleString(),
+    },
+    // more main-rows
+  ];
+
+  const subRowData = [
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
+  ];
+  const waredata = [
+    {
+      mainColumn1: "Fixed Assets:",
+      mainColumn2: "21%",
+    },
+    {
+      mainColumn1: "Supplies:",
+      mainColumn2: "5%",
+    },
+    { mainColumn1: "Insurance:", mainColumn2: "12%" },
+    {
+      mainColumn1: "Lease:",
+      mainColumn2: "11%",
+    },
+    {
+      mainColumn1: "Contractors:",
+      mainColumn2: "8%",
+    },
+    // more main-rows
+  ];
+
+  const waresubRowData = [
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
+  ];
+  const logdata = [
+    {
+      mainColumn1: "Drivers:",
+      mainColumn2: "17%",
+    },
+    {
+      mainColumn1: "Gasoline:",
+      mainColumn2: "14%",
+    },
+    { mainColumn1: "Routes:", mainColumn2: "12%" },
+    {
+      mainColumn1: "Supplies Costs:",
+      mainColumn2: suppliesCostSum.toLocaleString(),
+    },
+    {
+      mainColumn1: "Insurance Costs:",
+      mainColumn2: insuranceCostSum.toLocaleString(),
+    },
+    // more main-rows
+  ];
+
+  const logsubRowData = [
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
+    [
+      // ["row1", "price"],
+      // ["row2", "price"],
+    ],
+  ];
+
   return (
     <>
-      <div
-        key={id}
-        className="stake-card-container p-8 mx-4 flex flex-col justify-center items-center rounded-3xl"
-      >
-        <div className="asset-img">
-          <img src={img} className="w-12" />
-        </div>
-        <div className="asset-name text-white text-4xl text-center">
-          Working Capital
-        </div>
-        <div className="asset-description text-gray-400 text-center text-sm mt-4">
-          {desc}
-        </div>
-        <div className="financial-information flex items-center justify-center gap-4 mt-4 w-full">
-          <div className="left-financial-information text-center justify-center items-center w-40">
-            <div className="apr-amount text-green-400">
-              {(apr * 100).toFixed(1)}%
+      <>
+        <div key={id} id="dash" className="col-md-5 mx-auto">
+          <div className="custom-card">
+            <div className="custom-card-img">
+              <img src={img} alt="Profile" />
             </div>
-            <div className="apr-info flex justify-center gap-2 items-center">
-              <div className="apr-tag text-gray-300 font-light text-sm">
-                APR{" "}
+            <div className="custom-desc">
+              <h6 className="custom-primary-text">{name}</h6>
+              <h6 className="custom-secondary-text">{desc}</h6>
+            </div>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+
+            <div className="custom-details">
+              <div className="custom-rating">
+                <h6 className="custom-primary-text">
+                  {(apr * 100).toFixed(1)}%
+                </h6>
+                <h6 className="custom-secondary-text">APR</h6>
               </div>
-              <img src="info.png" className="w-5 h-5" />
+              <div className="custom-activity">
+                <h6 className="custom-primary-text">
+                  ${amtStaked.toLocaleString()}
+                </h6>
+                <h6 className="custom-secondary-text">Staked Now</h6>
+              </div>
             </div>
-          </div>
-          <div className="line h-14"></div>
-          <div className="right-financial-information text-white text-center w-40">
-            <div className="dollar-amount-staked">
-              ${amtStaked.toLocaleString()}
-            </div>
-            <div className="amt-tag text-sm text-gray-300 font-light ">
-              Staked Now
-            </div>
-          </div>
-        </div>
-        <div className="revenue-generated-container mt-4 flex text-white gap-4 w-full justify-between text-sm">
-          <div className="left-revenue-text">Revenue Generated:</div>
-          <div className="right-revenue-text flex items-center gap-2">
-            <div className="dollar-amount">${revenue.toLocaleString()}</div>
-            <div className="show-more">
-              <img className="w-3" src="/down-filled-triangular-arrow.png" />
-            </div>
-          </div>
-        </div>
-        <div className="asset-costs-container mt-4 flex text-white gap-4 w-full justify-between  text-sm">
-          <div className="left-asset-text text-md">Fixed Asset Costs:</div>
-          <div className="right-asset-text flex items-center gap-2">
-            <div className="dollar-amount">
-              ${warehouseAssetCostSum.toLocaleString()}
-            </div>
-            <div className="show-more">
-              <img className="w-3" src="/down-filled-triangular-arrow.png" />
-            </div>
-          </div>
-        </div>
-        <div className="labor-costs-container mt-4 flex text-white gap-4 w-full justify-between  text-sm">
-          <div className="left-labor-text text-md">Labor Costs:</div>
-          <div className="right-labor-text flex items-center gap-2">
-            <div className="dollar-amount">
-              ${laborCostSum.toLocaleString()}
-            </div>
-            <div className="show-more">
-              <img className="w-3" src="/down-filled-triangular-arrow.png" />
-            </div>
-          </div>
-        </div>
-        <div className="asset-costs-container mt-4 flex text-white gap-4 w-full justify-between  text-sm">
-          <div className="left-asset-text text-md">Supplies Costs:</div>
-          <div className="right-asset-text flex items-center gap-2">
-            <div className="dollar-amount">
-              ${suppliesCostSum.toLocaleString()}
-            </div>
-            <div className="show-more">
-              <img className="w-3" src="/down-filled-triangular-arrow.png" />
-            </div>
-          </div>
-        </div>
-        <div className="insurance-costs-container mt-4 flex text-white gap-4 w-full justify-between  text-sm">
-          <div className="left-insurance-text text-md">Insurance Costs:</div>
-          <div className="right-insurance-text flex items-center gap-2">
-            <div className="dollar-amount">
-              ${insuranceCostSum.toLocaleString()}
-            </div>
-            <div className="show-more">
-              <img className="w-3" src="/down-filled-triangular-arrow.png" />
-            </div>
-          </div>
-        </div>
-        <div className="profit-container mt-4 flex text-white gap-4 w-full justify-between">
-          <div className="left-profit-text text-md">Profit:</div>
-          <div className="dollar-amount">${profit.toLocaleString()}</div>
-        </div>
-        <div className="stake-btn">
-          <button className="text-white mt-8 px-8 py-4 bg-green-400 rounded-xl flex items-center justift-center gap-2">
-            <p>Stake</p>
-            <img className="w-8" src="usdc.png" />
-          </button>
-        </div>
-        <div className="learn-more-btn text-gray-400 text-sm mt-4">
-          <u>Learn More</u>
-        </div>
-      </div>
 
-      <div
-        key={id}
-        className="stake-card-container p-8 mx-4 flex flex-col justify-center items-center rounded-3xl mt-6"
-      >
-        <div className="asset-img">
-          <img src="/asset-management.png" className="w-12" />
-        </div>
-        <div className="asset-name text-white text-4xl text-center">
-          Working Capital Allocation
-        </div>
-        <div className="asset-description text-gray-400 text-center text-sm mt-4">
-          Warehousing
-        </div>
+            <br></br>
+            <br></br>
 
-        <div className="revenue-generated-container mt-4 flex text-white gap-4 w-full justify-between text-sm">
-          <div className="left-revenue-text">Fixed Assets</div>
-          <div className="right-revenue-text flex items-center gap-2">
-            <div className="dollar-amount">21%</div>
-            <div className="show-more">
-              <img className="w-3" src="/down-filled-triangular-arrow.png" />
+            {/* table */}
+            <table className="custom-table">
+              <tbody>
+                {data.map((item, index) => (
+                  <React.Fragment key={index}>
+                    <tr
+                      className="main-row"
+                      onClick={() => toggleSubRows(index)}
+                    >
+                      <td id="tdata">{item.mainColumn1}</td>
+                      <td id="tdata">
+                        ${item.mainColumn2}
+                        <span
+                          className={`dropdown-icon ${
+                            expandedRows.includes(index) ? "open" : ""
+                          }`}
+                        >
+                          ▼
+                        </span>
+                      </td>
+                    </tr>
+                    {expandedRows.includes(index) && (
+                      <>
+                        {subRowData[index].map((subRow, subRowIndex) => (
+                          <tr className="sub-row" key={subRowIndex}>
+                            <td colSpan={2}>
+                              <div className="sub-row-content">
+                                <div>{subRow[0]}</div>
+                                <div>${subRow[1]}</div>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </>
+                    )}
+                  </React.Fragment>
+                ))}
+              </tbody>
+              <p id="totalcontent">
+                <span id="total">Profit:</span>
+                <span id="totalprice">${profit.toLocaleString()}</span>
+              </p>
+            </table>
+          </div>
+          <div className="col-md-12 text-center">
+            <button
+              id="submitbut"
+              type="button"
+              className="button button-a button-big button-rounded"
+            >
+              <b>Stake</b>
+              <img src={stakeIcon} alt="Stake Icon" className="icon" />{" "}
+            </button>
+            <div className="learn-more-btn text-sm mt-4">
+              <p id="learnmore">Learn More</p>
             </div>
           </div>
         </div>
-        <div className="asset-costs-container mt-4 flex text-white gap-4 w-full justify-between  text-sm">
-          <div className="left-asset-text text-md">Supplies</div>
-          <div className="right-asset-text flex items-center gap-2">
-            <div className="dollar-amount">5%</div>
-            <div className="show-more">
-              <img className="w-3" src="/down-filled-triangular-arrow.png" />
+      </>
+
+      <>
+        <div key={id} id="dash" className="col-md-5 mx-auto">
+          <div className="custom-card">
+            <div className="custom-card-img">
+              <img src={management} alt="Profile" />
             </div>
+            
+              <div className="custom-desc">
+                <h6 className="custom-primary-text">
+                  Working Capital Allocation
+                </h6>
+                <h6 className="custom-secondary-text">Warehousing</h6>
+              </div>
+
+              
+
+              {/* table */}
+              <table className="custom-table">
+                <tbody>
+                  {waredata.map((item, index) => (
+                    <React.Fragment key={index}>
+                      <tr
+                        className="main-row"
+                        onClick={() => toggleSubRows(index)}
+                      >
+                        <td id="tdata">{item.mainColumn1}</td>
+                        <td id="tdata">
+                          ${item.mainColumn2}
+                          <span
+                            className={`dropdown-icon ${
+                              expandedRows.includes(index) ? "open" : ""
+                            }`}
+                          >
+                            ▼
+                          </span>
+                        </td>
+                      </tr>
+                      {expandedRows.includes(index) && (
+                        <>
+                          {waresubRowData[index].map((subRow, subRowIndex) => (
+                            <tr className="sub-row" key={subRowIndex}>
+                              <td colSpan={2}>
+                                <div className="sub-row-content">
+                                  <div>{subRow[0]}</div>
+                                  <div>${subRow[1]}</div>
+                                </div>
+                              </td>
+                            </tr>
+                          ))}
+                        </>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </tbody>
+              </table>
+
+              <h6>Logistics</h6>
+
+              
+              {/* table */}
+              <table className="custom-table">
+                <tbody>
+                  {logdata.map((item, index) => (
+                    <React.Fragment key={index}>
+                      <tr
+                        className="main-row"
+                        onClick={() => toggleSubRows(index)}
+                      >
+                        <td id="tdata">{item.mainColumn1}</td>
+                        <td id="tdata">
+                          ${item.mainColumn2}
+                          <span
+                            className={`dropdown-icon ${
+                              expandedRows.includes(index) ? "open" : ""
+                            }`}
+                          >
+                            ▼
+                          </span>
+                        </td>
+                      </tr>
+                      {expandedRows.includes(index) && (
+                        <>
+                          {logsubRowData[index].map((subRow, subRowIndex) => (
+                            <tr className="sub-row" key={subRowIndex}>
+                              <td colSpan={2}>
+                                <div className="sub-row-content">
+                                  <div>{subRow[0]}</div>
+                                  <div>${subRow[1]}</div>
+                                </div>
+                              </td>
+                            </tr>
+                          ))}
+                        </>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </tbody>
+                <p id="totalcontent">
+                  <span id="total">Profit:</span>
+                  <span id="totalprice">$400</span>
+                </p>
+              </table>
+            
+
+              
+            
           </div>
         </div>
-        <div className="labor-costs-container mt-4 flex text-white gap-4 w-full justify-between  text-sm">
-          <div className="left-labor-text text-md">Insurance</div>
-          <div className="right-labor-text flex items-center gap-2">
-            <div className="dollar-amount">12%</div>
-            <div className="show-more">
-              <img className="w-3" src="/down-filled-triangular-arrow.png" />
-            </div>
-          </div>
-        </div>
-        <div className="asset-costs-container mt-4 flex text-white gap-4 w-full justify-between  text-sm">
-          <div className="left-asset-text text-md">Lease</div>
-          <div className="right-asset-text flex items-center gap-2">
-            <div className="dollar-amount">11%</div>
-            <div className="show-more">
-              <img className="w-3" src="/down-filled-triangular-arrow.png" />
-            </div>
-          </div>
-        </div>
-        <div className="insurance-costs-container mt-4 flex text-white gap-4 w-full justify-between  text-sm">
-          <div className="left-insurance-text text-md">Contractors</div>
-          <div className="right-insurance-text flex items-center gap-2">
-            <div className="dollar-amount">8%</div>
-            <div className="show-more">
-              <img className="w-3" src="/down-filled-triangular-arrow.png" />
-            </div>
-          </div>
-        </div>
-        <div className="asset-description text-gray-400 text-center text-sm mt-4">
-          Logistics
-        </div>
-        <div className="asset-costs-container mt-4 flex text-white gap-4 w-full justify-between  text-sm">
-          <div className="left-asset-text text-md">Drivers</div>
-          <div className="right-asset-text flex items-center gap-2">
-            <div className="dollar-amount">17%</div>
-            <div className="show-more">
-              <img className="w-3" src="/down-filled-triangular-arrow.png" />
-            </div>
-          </div>
-        </div>
-        <div className="asset-costs-container mt-4 flex text-white gap-4 w-full justify-between  text-sm">
-          <div className="left-asset-text text-md">Gasoline</div>
-          <div className="right-asset-text flex items-center gap-2">
-            <div className="dollar-amount">14%</div>
-            <div className="show-more">
-              <img className="w-3" src="/down-filled-triangular-arrow.png" />
-            </div>
-          </div>
-        </div>
-        <div className="asset-costs-container mt-4 flex text-white gap-4 w-full justify-between  text-sm">
-          <div className="left-asset-text text-md">Routes</div>
-          <div className="right-asset-text flex items-center gap-2">
-            <div className="dollar-amount">12%</div>
-            <div className="show-more">
-              <img className="w-3" src="/down-filled-triangular-arrow.png" />
-            </div>
-          </div>
-        </div>
-        <div className="profit-container mt-4 flex text-white gap-4 w-full justify-between">
-          <div className="left-profit-text text-md"></div>
-          <div className="dollar-amount"></div>
-        </div>
-      </div>
+      </>
     </>
   );
 }

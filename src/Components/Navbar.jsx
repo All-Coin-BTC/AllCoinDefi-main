@@ -185,16 +185,16 @@ const Navbar = ({
                   </a>
                   <ul className="dropdown-menu" role="menu">
                     <li>
-                      <a>Logistics Pools </a>
+                      <Link to="/working-capital-pools">Logistics Pools </Link>
                     </li>
                     <li>
-                      <a> Warehouse Pools</a>
+                      <Link to="/warehouse-pools"> Warehouse Pools</Link>
                     </li>
                     <li>
-                      <a> Working Capital Pools</a>
+                      <Link to="/working-capital-pools"> Working Capital Pools</Link>
                     </li>
                     <li>
-                      <a>Insurance Pools</a>
+                      <Link to="/insurance-pools">Insurance Pools</Link>
                     </li>
                   </ul>
                 </li>
@@ -208,20 +208,20 @@ const Navbar = ({
                   </a>
                   <ul className="dropdown-menu" role="menu">
                     <li>
-                      <a>Roadmap</a>
+                      <Link>Roadmap</Link>
                     </li>
                     <li>
-                      <a>Whitepaper</a>
+                      <Link>Whitepaper</Link>
                     </li>
                     <li>
-                      <a>Medium</a>
+                      <Link>Medium</Link>
                     </li>
                     
                     
                   </ul>
                 </li>
                 <li>
-                  <a>Contact</a>
+                  <Link>Contact</Link>
                 </li>
                 {/* Cart Icon Starts */}
                 {/* <li className="cart">
