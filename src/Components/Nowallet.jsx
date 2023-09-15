@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import web3 from "../web3";
-import BuyModal from "./BuyModal"
+import ConnectModal from "./ConnectModal"
 
 const Nowallet = ({ connectWallet }) => {
   const [isWalletConnected, setIsWalletConnected] = useState(false);
-  const [isBuyModalOpen, setIsBuyModalOpen] = useState(false);
+  const [isConnectModalOpen, setIsConnectModalOpen] = useState(false);
 
   useEffect(() => {
     const checkWalletConnection = async () => {
@@ -23,25 +23,25 @@ const Nowallet = ({ connectWallet }) => {
     checkWalletConnection();
   }, []);
 
-  const handleBuyModalClick = () => {
-    setIsBuyModalOpen(true);
+  const handleConnectModalClick = () => {
+    setIsConnectModalOpen(true);
   };
 
-  const handleCloseBuyModal = () => {
-    setIsBuyModalOpen(false);
+  const handleCloseConnectModal = () => {
+    setIsConnectModalOpen(false);
   };
 
-  const handleBuySubmit = (e) => {
+  const handleConnectSubmit = (e) => {
     e.preventDefault();
     // Add your form submission logic here
-    // For example, you can get the form data and handle the buy process
+    // For example, you can get the form data and handle the Connect process
     // const formData = new FormData(e.target);
     // const amount = formData.get("amount");
     // const address = formData.get("address");
-    // Perform the buy operation with 'amount' and 'address' data
+    // Perform the Connect operation with 'amount' and 'address' data
     // Close the modal
 
-    handleCloseBuyModal();
+    handleCloseConnectModal();
   };
 
   return (
@@ -66,7 +66,7 @@ const Nowallet = ({ connectWallet }) => {
                   <p>
                     <button
                       className="connect-btn"
-                      onClick={handleBuyModalClick}
+                      onClick={handleConnectModalClick}
                     >
                       Enter App
                     </button>
@@ -79,9 +79,9 @@ const Nowallet = ({ connectWallet }) => {
         </div>
         {/* Carousel Inner Ends */}
       </div>
-      {/* Render the BuyModal if isBuyModalOpen is true */}
-      {isBuyModalOpen && (
-        <BuyModal onClose={handleCloseBuyModal} onSubmit={handleBuySubmit} />
+      {/* Render the ConnectModal if isConnectModalOpen is true */}
+      {isConnectModalOpen && (
+        <ConnectModal onClose={handleCloseConnectModal} onSubmit={handleConnectSubmit} />
       )}
     </>
   );

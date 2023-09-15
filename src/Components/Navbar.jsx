@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWallet } from "@fortawesome/free-solid-svg-icons";
@@ -6,6 +6,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import logo from "../assets/images/Logo-main.png";
 import web3 from "../web3"; // Import the web3 instance
 import "../assets/css/dashboard.css";
+import ConnectModal from "./ConnectModal"
 
 const Navbar = ({
   isWalletConnected,
@@ -17,6 +18,29 @@ const Navbar = ({
     ? `${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`
     : "";
     const location = useLocation();
+
+    const [isConnectModalOpen, setIsConnectModalOpen] = useState(false);
+
+    const handleConnectModalClick = () => {
+      setIsConnectModalOpen(true);
+    };
+  
+    const handleCloseConnectModal = () => {
+      setIsConnectModalOpen(false);
+    };
+  
+    const handleConnectSubmit = (e) => {
+      e.preventDefault();
+      // Add your form submission logic here
+      // For example, you can get the form data and handle the Connect process
+      // const formData = new FormData(e.target);
+      // const amount = formData.get("amount");
+      // const address = formData.get("address");
+      // Perform the Connect operation with 'amount' and 'address' data
+      // Close the modal
+  
+      handleCloseConnectModal();
+    };
 
     const isActiveRoute = (...routePaths) => {
       return routePaths.some((path) => location.pathname === path);
@@ -112,7 +136,7 @@ const Navbar = ({
               ) : (
                 <>
                   <li className="connect-wallet">
-                    <button className="connect-btn" onClick={connectWallet}>
+                    <button className="connect-btn" onClick={handleConnectModalClick}>
                       <i className="fa fa-plug"></i> Connect Wallet
                     </button>
                   </li>
@@ -256,6 +280,10 @@ const Navbar = ({
       </nav>
 
       {/* Navigation Menu Ends */}
+      {/* Render the ConnectModal if isConnectModalOpen is true */}
+      {isConnectModalOpen && (
+        <ConnectModal onClose={handleCloseConnectModal} onSubmit={handleConnectSubmit} />
+      )}
     </header>
   );
 };
