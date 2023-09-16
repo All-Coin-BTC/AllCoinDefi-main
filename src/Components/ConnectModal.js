@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import Satoshi from "../assets/images/satoshi.png";
+import Blue from "../assets/images/bluewallet.png";
+import Breez from "../assets/images/Breezwallet.png";
+import Alby from "../assets/images/albywallet.jpg";
 
 const ConnectModal = ({ onClose, onSubmit }) => {
-  const [field1, setField1] = useState("");
-  const [field2, setField2] = useState("");
-
   const handleConnectSubmit = (e) => {
     e.preventDefault();
     // Add your form submission logic here
@@ -12,7 +13,7 @@ const ConnectModal = ({ onClose, onSubmit }) => {
     // const amount = formData.get("amount");
     // const address = formData.get("address");
     // Perform the Connect operation with 'amount' and 'address' data
-    
+
     // Close the modal
     onClose();
   };
@@ -26,49 +27,82 @@ const ConnectModal = ({ onClose, onSubmit }) => {
         <h3 style={header}>CONNECT TO LIGHTNING WALLET</h3>
         <div className="maincard">
           <div className="stake">
-            <div className="col-md-12 mb-3">
-             <form>
-             <div className="form-group">
-                <label className="css-1owdu0o">
-                  <div className="css-zkfaav">Sell</div>
-                </label>
-                <input
-                  type="number"
-                  className="form-control"
-                  placeholder="0.00 SUSD"
-                  value={field1}
-                  onChange={(e) => setField1(e.target.value)}
-                  required
-                />
-
-                <label className="css-1owdu0o">
-                  <div className="css-zkfaav">Connect</div>
-                </label>
-                <input
-                  type="number"
-                  className="form-control"
-                  placeholder="0.00 BSUSD"
-                  value={field2}
-                  onChange={(e) => setField2(e.target.value)}
-                  required
-                />
-              </div>
-             </form>
-            </div>
-          </div>
-
-          <div>
-            <p>
-              <b>Exchange Rate: </b>0.8574 SUSD:bSUSD
-            </p>
-            <p>
-              <b>Price impact: </b>0.0000%
-            </p>
-          </div>
-
-          <p>Your swap is performed directly in Curve protocol.</p>
-
           
+              <div className="card">
+                <div className="card-body d-flex">
+                  <img src={Satoshi} className="card-img-left" alt="..." />
+                  <div className="card-content">
+                    <h5 className="card-title">
+                      <a
+                        href="https://www.walletofsatoshi.com/?ref=bitrefill.com"
+                        target="_blank"
+                      >
+                        Wallet of Satoshi
+                      </a>
+                    </h5>
+                    <p className="card`-text">Availiable on IoS and Android</p>
+                  </div>
+                </div>
+              </div>
+              <hr />
+
+              <div className="card">
+                <div className="card-body d-flex">
+                  <img src={Blue} className="card-img-left" alt="..." />
+
+                  <div className="card-content">
+                    <h5 className="card-title">
+                      <a
+                        href="https://bluewallet.io/?ref=bitrefill.com"
+                        target="_blank"
+                      >
+                        Bluewallet
+                      </a>
+                    </h5>
+                    <p className="card-text">Availiable on IoS and Android</p>
+                  </div>
+                </div>
+              </div>
+              <hr />
+
+              <div className="card">
+                <div className="card-body d-flex">
+                  <img src={Breez} className="card-img-left" alt="..." />
+                  <div className="card-content">
+                    <h5 className="card-title">
+                      <a
+                        href="https://breez.technology/?ref=bitrefill.com"
+                        target="_blank"
+                      >
+                        Breez
+                      </a>
+                    </h5>
+                    <p className="card-text">Availiable on IoS and Android</p>
+                  </div>
+                </div>
+              </div>
+              <hr />
+
+              <div className="card">
+                <div className="card-body d-flex">
+                  <img src={Alby} className="card-img-left" alt="..." />
+                  <div className="card-content">
+                    <h5 className="card-title">
+                      <a
+                        href="https://getalby.com/?ref=bitrefill.com"
+                        target="_blank"
+                      >
+                        Alby
+                      </a>
+                    </h5>
+                    <p className="card-text">
+                      Browser Extension (Chrome & Firefox)
+                    </p>
+                  </div>
+                </div>
+              </div>
+          
+          </div>
         </div>
       </div>
     </div>
@@ -104,4 +138,3 @@ const modalContentStyle = {
   padding: "20px",
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
 };
-

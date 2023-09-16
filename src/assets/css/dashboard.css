@@ -481,10 +481,44 @@ input[type='radio'] {
 }
 
 .maincard {
-  background-color: #fff;
+  background-color: rgb(41, 40, 40);
   border-radius: 10px;
   padding: 20px;
+  max-height: 40rem;
+  overflow: scroll;
+
 }
+
+.card-body {
+  display: flex;
+  align-items: center;
+}
+
+.card-img-left {
+  width: 50px; 
+  height: auto; 
+  margin-right: 20px; 
+  border-radius: 10px;
+}
+
+.card-content {
+  flex: 1; 
+}
+.card-title {
+  font-size: large;
+  font-family: sans-serif;
+}
+.card-text {
+  color: whitesmoke;
+}
+
+
+@media (max-width: 1024px) {
+  .card {
+    background-attachment: scroll;
+  }
+}
+
 
 #messagebut {
   color: white;
